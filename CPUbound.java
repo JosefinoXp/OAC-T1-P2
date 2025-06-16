@@ -17,8 +17,8 @@ public class CPUBound {
         long cpuNs = mx.getCurrentThreadCpuTime() - ini;
 
         System.out.println("Movimentos: " + moves);
-        System.out.println("Duracao: " + TimeUnit.NANOSECONDS.toMillis(cpuNs));
-        System.out.println("Duracao: " + TimeUnit.NANOSECONDS.toSeconds(cpuNs));
+        System.out.println("Duracao em milisegundos: " + TimeUnit.NANOSECONDS.toMillis(cpuNs));
+        System.out.println("Duracao em segundos: " + TimeUnit.NANOSECONDS.toSeconds(cpuNs));
     }
     
 }
