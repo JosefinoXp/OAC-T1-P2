@@ -1,37 +1,24 @@
-import java.util.*;
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadMXBean;
 import java.util.concurrent.TimeUnit;
 
-public class CPUbound {
-    static void TorreDeHanoi(int N, char torre_vindo, char torre_indo, char torre_aux) {
-        if (N == 0)
-            return;
-
-        TorreDeHanoi(N - 1, torre_vindo, torre_aux, torre_indo);
-
-        System.out.println("Disco movido " + N + " vindo do disco " + torre_vindo + " para disco " + torre_indo);
-
-        TorreDeHanoi(N - 1, torre_aux, torre_indo, torre_vindo);
+public class CPUBound {
+    static long TorreDeHanoi(long n) {
+        if (n == 0) return 0;
+        return 1 + 2 * TorreDeHanoi(n - 1);
     }
-    
+
     public static void main(String[] args) {
-        long TempoInicial, TempoFinal;
+        int N = Integer.parseInt(args[0]);
+        ThreadMXBean mx = ManagementFactory.getThreadMXBean();
 
-        System.out.println("Digite o numero de interacoes: ");
+        long ini = mx.getCurrentThreadCpuTime();
+        long moves = TorreDeHanoi(N);
+        long cpuNs = mx.getCurrentThreadCpuTime() - ini;
 
-        Scanner entrada = new Scanner(System.in);
-
-        int N = entrada.nextInt();
-
-        TempoInicial = System.nanoTime();
-
-        TorreDeHanoi(N, 'A', 'C', 'B');
-
-        TempoFinal = (System.nanoTime() - TempoInicial);
-
-        System.out.println("Duracao de tempo em milisegundos: (" + TimeUnit.NANOSECONDS.toMillis(TempoFinal)  + ")");
-        System.out.println("Duracao de tempo em segundos: (" + TimeUnit.NANOSECONDS.toSeconds(TempoFinal) + ")");
-
-        entrada.close();
+        System.out.println("Movimentos: " + moves);
+        System.out.println("Duracao: " + TimeUnit.NANOSECONDS.toMillis(cpuNs));
+        System.out.println("Duracao: " + TimeUnit.NANOSECONDS.toSeconds(cpuNs));
     }
     
 }
