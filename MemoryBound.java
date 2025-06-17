@@ -128,28 +128,28 @@ public class MemoryBound {
         BinarySearchTree bst = new BinarySearchTree();
         
         // Fase 1: Inserção massiva de dados (memory-intensive)
-        System.out.println("Inserindo 50.000 nós na árvore...");
+        System.out.println("Inserindo 10.000.000 nós na árvore...");
         Random random = new Random(12345); // Seed fixo para reprodutibilidade
-        for (int i = 0; i < 50000; i++) {
+        for (int i = 0; i < 10000000; i++) {
             bst.insert(random.nextInt(100000));
         }
         
         // Fase 2: Buscas intensivas
-        System.out.println("Realizando 100.000 buscas...");
-        for (int i = 0; i < 100000; i++) {
+        System.out.println("Realizando 20.000.000 buscas...");
+        for (int i = 0; i < 20000000; i++) {
             bst.search(random.nextInt(100000));
         }
         
         // Fase 3: Múltiplos percursos da árvore
-        System.out.println("Realizando 50 percursos completos da árvore...");
-        for (int i = 0; i < 50; i++) {
+        System.out.println("Realizando 1000 percursos completos da árvore...");
+        for (int i = 0; i < 1000; i++) {
             bst.inOrderTraversal();
         }
         
         // Fase 4: Clonagem da árvore (operação muito intensiva em memória)
-        System.out.println("Clonando a árvore 10 vezes...");
+        System.out.println("Clonando a árvore 40 vezes...");
         List<BinarySearchTree> clones = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 40; i++) {
             clones.add(bst.cloneTree());
         }
         
