@@ -14,15 +14,15 @@ public class CPUBound {
 
     public static void main(String[] args) {
 
-        System.out.println("ATENÇÃO: NÃO ACEITAMOS NÚMEROS A PARTIR DE UM SEXTILIAO");
-        System.out.println("Digite o maior valor que vai querer verificar: ");
+        // System.out.println("ATENÇÃO: NÃO ACEITAMOS NÚMEROS A PARTIR DE UM SEXTILIAO");
+        // System.out.println("Digite o maior valor que vai querer verificar: ");
         
         ThreadMXBean medidor = ManagementFactory.getThreadMXBean();
-        Scanner entrada = new Scanner(System.in);
+        // Scanner entrada = new Scanner(System.in);
         
-        long maiorNumero = entrada.nextLong();
+        // long maiorNumero = entrada.nextLong();
 
-        entrada.close();
+        // entrada.close();
 
         System.out.println("Contando...");
 
@@ -30,7 +30,7 @@ public class CPUBound {
         long inicio = medidor.getCurrentThreadCpuTime();
         
         long contagemPrimos = 0;
-        for (long i = 2; i < maiorNumero; i++) {
+        for (long i = 2; i < 50000000; i++) {
             if (EhPrimo(i)) {
                 contagemPrimos++;
             }
